@@ -1,0 +1,44 @@
+{{/* Resolve effective image: per-site setting takes priority, then group shared image */}}
+{{ $ogImage := .Site.Params.ogImage | default .Site.Params.groupOgImage }}
+{{/* Open Graph */}}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}">
+<meta property="og:description" content="{{ .Site.Params.seoDescription | default .Site.Params.description | default .Site.Title }}">
+<meta property="og:url" content="{{ .Permalink }}">
+{{ if $ogImage }}<meta property="og:image" content="{{ $ogImage | absURL }}">{{ end }}
+<meta property="og:site_name" content="{{ .Site.Title }}">
+{{/* Twitter Card */}}
+<meta name="twitter:card" content="{{ if $ogImage }}summary_large_image{{ else }}summary{{ end }}">
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}">
+<meta name="twitter:description" content="{{ .Site.Params.seoDescription | default .Site.Params.description | default .Site.Title }}">
+{{ if $ogImage }}<meta name="twitter:image" content="{{ $ogImage | absURL }}">{{ end }}
+{{ if .Site.Params.twitterHandle }}<meta name="twitter:site" content="{{ .Site.Params.twitterHandle }}">{{ end }}
+{{/* Canonical URL */}}
+<link rel="canonical" href="{{ .Permalink }}">
+{{/* JSON-LD — company: Organization+brand[]; brand: Organization+parentOrganization; standalone: Organization */}}
+{{ $desc := .Site.Params.seoDescription | default .Site.Params.description | default .Site.Title }}
+{{ $legalName := .Site.Params.author | default .Site.Params.groupOrgName | default .Site.Params.groupCompanyName }}
+{{ $role := .Site.Params.groupRole }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ .Site.Title | replaceRE `\\` `\\\\` | replaceRE `"` `\\"` }}",
+  "url": "{{ .Site.BaseURL | replaceRE `\\` `\\\\` | replaceRE `"` `\\"` }}",
+  "description": "{{ $desc | replaceRE `\\` `\\\\` | replaceRE `"` `\\"` }}"
+  {{- if $legalName }},
+  "legalName": "{{ $legalName | replaceRE `\\` `\\\\` | replaceRE `"` `\\"` }}"
+  {{- end }}
+  {{- if eq $role "company" }}{{ with .Site.Params.groupBrands }},
+  "brand": [{{ range $i, $b := . }}{{ if $i }},{{ end }}
+    { "@type": "Brand", "name": "{{ $b.name | replaceRE `\\` `\\\\` | replaceRE `"` `\\"` }}", "url": "{{ $b.url | replaceRE `\\` `\\\\` | replaceRE `"` `\\"` }}" }{{ end }}
+  ]{{ end }}
+  {{- else if eq $role "brand" }}{{ with .Site.Params.groupCompanyName }},
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "{{ . | replaceRE `\\` `\\\\` | replaceRE `"` `\\"` }}"{{ with $.Site.Params.groupCompanyUrl }},
+    "url": "{{ . | replaceRE `\\` `\\\\` | replaceRE `"` `\\"` }}"{{ end }}
+  }{{ end }}
+  {{- end }}
+}
+</script>

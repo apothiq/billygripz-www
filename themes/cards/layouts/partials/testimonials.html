@@ -1,0 +1,13 @@
+{{ with (hugo.Data).site }}{{ if .testimonials }}
+<section id="testimonials" class="section-testimonials">
+  <h2>{{ $.Site.Params.testimonialsTitle | default "What Clients Say" }}</h2>
+  <div class="testimonials-strip">
+    {{ range .testimonials }}
+    <div class="testimonial">
+      <blockquote>"{{ .quote }}"</blockquote>
+      <cite>— {{ .author }}{{ if .role }}, {{ .role }}{{ end }}</cite>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}{{ end }}

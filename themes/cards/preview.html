@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.164.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acme Studio</title>
+  <meta name="description" content="Creative studio delivering modern websites">
+  <style>:root {
+  --color-primary: #5B2D8E;
+  --color-primary-light: #8B5FBF;
+  --color-primary-dark: #3A1A5C;
+  --color-accent: #F59E0B;
+  --color-accent-light: #FCD34D;
+  --color-accent-dark: #B45309;
+  --color-background: #F9F8FC;
+  --color-background-muted: #F0EDF7;
+  --color-surface: #FFFFFF;
+  --color-surface-light: #FFFFFF;
+  --color-surface-dark: #E2DCF0;
+  --color-text: #1E1527;
+  --color-text-light: #4B3E63;
+  --color-text-dark: #0F0A14;
+  --color-text-deeper: #000000;
+  --color-section-dark: #3A1A5C;
+  --color-section-footer: #1E0D30;
+  --font-heading: 'Georgia', serif;
+  --font-body: system-ui, -apple-system, sans-serif;
+  --border-radius: 8px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--color-background); color: var(--color-text); line-height: 1.65; }
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; display: block; }
+
+.site-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--color-primary);
+  padding: 0 3rem; display: flex; align-items: center;
+  justify-content: space-between; height: 64px;
+}
+.site-nav .brand { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: #fff; }
+.site-nav .nav-links { display: flex; gap: 2rem; list-style: none; }
+.site-nav .nav-links a { color: rgba(255,255,255,0.8); font-size: 0.95rem; }
+.site-nav .nav-links a:hover { color: #fff; text-decoration: none; }
+
+/* Bold hero */
+.section-hero {
+  background: var(--color-primary);
+  color: #fff; text-align: center;
+  padding: 6rem 2rem 5rem;
+}
+.section-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 1.1; margin-bottom: 1.25rem;
+}
+.section-hero .tagline {
+  font-size: 1.2rem; color: rgba(255,255,255,0.8);
+  max-width: 600px; margin: 0 auto 2.5rem;
+}
+.btn {
+  display: inline-block; padding: 0.8rem 2.25rem;
+  background: var(--color-accent); color: #000;
+  border-radius: var(--border-radius); font-weight: 700;
+  transition: background 0.2s;
+}
+.btn:hover { background: var(--color-accent-light); text-decoration: none; color: #000; }
+.btn-outline {
+  background: transparent; color: #fff;
+  border: 2px solid rgba(255,255,255,0.6); margin-left: 0.75rem;
+}
+.btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); color: #fff; }
+
+/* Cards grid */
+.section-cards {
+  padding: 5rem 3rem;
+  max-width: 1100px; margin: 0 auto;
+}
+.section-cards h2 {
+  font-family: var(--font-heading); font-size: 2rem;
+  color: var(--color-text-deeper); text-align: center;
+  margin-bottom: 3rem;
+}
+.cards-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+}
+.card {
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-surface-dark);
+  padding: 2rem 1.5rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover { box-shadow: 0 8px 24px rgba(91,45,142,0.12); transform: translateY(-2px); }
+.card .icon {
+  font-size: 2rem; margin-bottom: 1rem;
+  width: 56px; height: 56px; border-radius: 12px;
+  background: var(--color-background-muted);
+  display: flex; align-items: center; justify-content: center;
+}
+.card h3 { font-size: 1.1rem; font-weight: 600; color: var(--color-text); margin-bottom: 0.5rem; }
+.card p { font-size: 0.9rem; color: var(--color-text-light); line-height: 1.6; }
+
+/* Testimonials */
+.section-testimonials {
+  background: var(--color-section-dark);
+  padding: 5rem 3rem;
+}
+.section-testimonials h2 {
+  font-family: var(--font-heading); font-size: 2rem;
+  color: #fff; text-align: center; margin-bottom: 3rem;
+}
+.testimonials-strip {
+  display: flex; gap: 1.5rem; overflow-x: auto;
+  max-width: 1100px; margin: 0 auto;
+  padding-bottom: 0.5rem;
+}
+.testimonial {
+  background: rgba(255,255,255,0.08);
+  border-radius: var(--border-radius);
+  padding: 1.75rem; min-width: 280px; flex: 1;
+}
+.testimonial blockquote {
+  font-size: 0.95rem; color: rgba(255,255,255,0.85);
+  line-height: 1.7; margin-bottom: 1rem;
+  font-style: italic;
+}
+.testimonial cite {
+  font-size: 0.85rem; color: var(--color-accent-light);
+  font-style: normal; font-weight: 600;
+}
+
+/* CTA */
+.section-cta {
+  padding: 5rem 2rem; text-align: center;
+  background: var(--color-background-muted);
+}
+.section-cta h2 {
+  font-family: var(--font-heading); font-size: 2rem;
+  color: var(--color-text-deeper); margin-bottom: 1rem;
+}
+.section-cta p { color: var(--color-text-light); margin-bottom: 2rem; font-size: 1.05rem; }
+.section-cta .btn { background: var(--color-primary); color: #fff; }
+.section-cta .btn:hover { background: var(--color-primary-dark); }
+
+/* Contact */
+.section-contact {
+  background: var(--color-section-dark); padding: 5rem 2rem; text-align: center;
+}
+.section-contact h2 {
+  font-family: var(--font-heading); font-size: 2rem;
+  color: #fff; margin-bottom: 1rem;
+}
+.section-contact p { color: rgba(255,255,255,0.75); margin-bottom: 2rem; }
+.section-contact .btn { background: var(--color-accent); color: #000; }
+
+.site-footer {
+  background: var(--color-section-footer); color: rgba(255,255,255,0.45);
+  text-align: center; padding: 1.75rem; font-size: 0.875rem;
+}
+
+@media (max-width: 900px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .site-nav .nav-links { display: none; }
+  .section-hero { padding: 4rem 1.25rem 3rem; }
+  .site-nav { padding: 0 1.25rem; }
+}
+</style>
+  
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="/" class="brand">Acme Studio</a>
+    <ul class="nav-links">
+      
+    </ul>
+  </nav>
+  
+<section id="hero" class="section-hero">
+  <h1>Build something people love</h1>
+  <p class="tagline">We craft digital experiences that inspire</p>
+  <a href="#contact" class="btn">Get Started</a>
+  
+</section>
+
+<section id="services" class="section-cards">
+  <h2>Our Services</h2>
+  <div class="cards-grid">
+    
+    
+    <div class="card">
+      <div class="icon">🎨</div>
+      <h3>Web Design</h3>
+      <p>Pixel-perfect interfaces your users will love.</p>
+    </div>
+    
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h3>Development</h3>
+      <p>Fast, accessible, and built to last.</p>
+    </div>
+    
+    <div class="card">
+      <div class="icon">🔍</div>
+      <h3>SEO</h3>
+      <p>Get found by the right people.</p>
+    </div>
+    
+    <div class="card">
+      <div class="icon">✦</div>
+      <h3>Branding</h3>
+      <p>Identity systems that tell your story.</p>
+    </div>
+    
+    <div class="card">
+      <div class="icon">◆</div>
+      <h3>Strategy</h3>
+      <p>Data-driven decisions, human-centered design.</p>
+    </div>
+    
+    <div class="card">
+      <div class="icon">★</div>
+      <h3>Support</h3>
+      <p>We&#39;re with you every step of the way.</p>
+    </div>
+    
+    
+  </div>
+</section>
+
+
+<section id="testimonials" class="section-testimonials">
+  <h2>What Clients Say</h2>
+  <div class="testimonials-strip">
+    
+    <div class="testimonial">
+      <blockquote>"Working with Acme transformed our online presence."</blockquote>
+      <cite>— Sarah Chen, Founder, Bloom Co</cite>
+    </div>
+    
+    <div class="testimonial">
+      <blockquote>"The results exceeded every expectation we had."</blockquote>
+      <cite>— Marcus Lee, CEO, Vertex</cite>
+    </div>
+    
+  </div>
+</section>
+
+
+
+<section class="section-cta">
+  <h2>Ready to start your project?</h2>
+  <p>Let&#39;s build something great together.</p>
+  <a href="#contact" class="btn">Contact Us</a>
+</section>
+
+
+<section id="contact" class="section-contact">
+  <h2>Let&#39;s Work Together</h2>
+  <p>Tell us about your project.</p>
+  
+  <a href="mailto:hello@example.com" class="btn">hello@example.com</a>
+  
+</section>
+
+
+  <footer class="site-footer">
+  <p>© 2026 Acme Studio</p>
+</footer>
+
+</body>
+</html>

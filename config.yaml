@@ -1,0 +1,43 @@
+title: Billy Gripz
+theme: cards
+baseURL: /
+locale: en
+enableRobotsTXT: true
+disableKinds:
+  - taxonomy
+  - term
+menus:
+  main:
+    - name: FAQ
+      url: "#faq"
+      weight: 1
+    - name: Contact
+      url: "#contact"
+      weight: 2
+    - name: About
+      url: "#about"
+      weight: 3
+    - name: Blog
+      url: /blog/
+      weight: 4
+params:
+  tagline: Winter traction for your vehicle and yourself
+  heroTitle: Billy Gripz
+  ctaText: Get Started
+  ctaUrl: "#contact"
+  description: |-
+    Sell products online
+    Share knowledge & blog
+    Target audience: Small business owners, General consumers
+  contactTitle: Get in Touch
+  contactSubtitle: Reach out anytime.
+  contactEmail: support@apothiq.com
+  cardsTitle: What We Offer
+  cta:
+    title: Ready to get started?
+    subtitle: Winter traction for your vehicle and yourself
+    url: "#contact"
+    text: Get Started
+  googleAnalyticsId: G-NCS7WM66ND
+  seoDescription: Winter traction for your vehicle and your shoes
+  author: ApothIQ, LLC

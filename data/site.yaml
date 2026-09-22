@@ -1,0 +1,32 @@
+features:
+  - title: faq
+    description: Details about faq.
+    icon: ★
+  - title: contact-form
+    description: Details about contact-form.
+    icon: ◆
+  - title: about
+    description: Details about about.
+    icon: ●
+  - title: blog
+    description: Details about blog.
+    icon: ▲
+rows:
+  - title: About Us
+    paragraphs:
+      - Winter traction for your vehicle and yourself
+    emoji: ✦
+cards:
+  - title: faq
+    description: We specialize in faq.
+    icon: 🎨
+  - title: contact-form
+    description: We specialize in contact-form.
+    icon: 💡
+  - title: about
+    description: We specialize in about.
+    icon: ⚡
+  - title: blog
+    description: We specialize in blog.
+    icon: 🔧
+testimonials: []

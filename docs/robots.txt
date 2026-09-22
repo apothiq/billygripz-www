@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://billygripz.com/sitemap.xml
